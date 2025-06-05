@@ -244,7 +244,12 @@ if send_button and user_input.strip():
 
 # Optional: Add a clear chat button
 if st.session_state.messages and st.sidebar.button("Clear Chat 🗑️"):
-    st.session_state.messages = []
-    st.session_state.user_input_content = "" # Clear text area content
-    st.session_state.file_uploader_key += 1 # Reset file uploader
-    st.experimental_rerun()
+    st.session_state.messages = []  # Clear chat history
+    st.session_state.user_input_content = ""  # Clear user input
+    st.session_state.file_uploader_key += 1  # Reset file uploader
+    st.session_state.chat_cleared = True  # Optional flag for feedback
+
+# Optional success message
+if st.session_state.get("chat_cleared"):
+    st.success("✅ Chat history and input cleared.")
+    del st.session_state["chat_cleared"]  # Remove flag after showing message
