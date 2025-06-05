@@ -240,7 +240,7 @@ if send_button and user_input.strip():
             st.markdown(response)
         st.session_state.messages.append({"role": "assistant", "content": response})
 
-# Optional: Add a clear chat button
+
 if st.session_state.messages and st.sidebar.button("Clear Chat 🗑️"):
     st.session_state.messages = []  # Clear chat history
     st.session_state.user_input_content = ""  # Clear user input
